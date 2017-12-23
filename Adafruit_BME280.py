@@ -30,6 +30,7 @@ import time
 BME280_I2CADDR = 0x77
 
 # Operating Modes
+BME280_OSAMPLE_skipped = 0
 BME280_OSAMPLE_1 = 1
 BME280_OSAMPLE_2 = 2
 BME280_OSAMPLE_4 = 3
@@ -94,19 +95,19 @@ class BME280(object):
                  **kwargs):
         self._logger = logging.getLogger('Adafruit_BMP.BMP085')
         # Check that t_mode is valid.
-        if t_mode not in [BME280_OSAMPLE_1, BME280_OSAMPLE_2, BME280_OSAMPLE_4,
+        if t_mode not in [BME280_OSAMPLE_skipped, BME280_OSAMPLE_1, BME280_OSAMPLE_2, BME280_OSAMPLE_4,
                         BME280_OSAMPLE_8, BME280_OSAMPLE_16]:
             raise ValueError(
                 'Unexpected t_mode value {0}.'.format(t_mode))
         self._t_mode = t_mode
         # Check that p_mode is valid.
-        if p_mode not in [BME280_OSAMPLE_1, BME280_OSAMPLE_2, BME280_OSAMPLE_4,
+        if p_mode not in [BME280_OSAMPLE_skipped, BME280_OSAMPLE_1, BME280_OSAMPLE_2, BME280_OSAMPLE_4,
                         BME280_OSAMPLE_8, BME280_OSAMPLE_16]:
             raise ValueError(
                 'Unexpected p_mode value {0}.'.format(p_mode))
         self._p_mode = p_mode
         # Check that h_mode is valid.
-        if h_mode not in [BME280_OSAMPLE_1, BME280_OSAMPLE_2, BME280_OSAMPLE_4,
+        if h_mode not in [BME280_OSAMPLE_skipped, BME280_OSAMPLE_1, BME280_OSAMPLE_2, BME280_OSAMPLE_4,
                         BME280_OSAMPLE_8, BME280_OSAMPLE_16]:
             raise ValueError(
                 'Unexpected h_mode value {0}.'.format(h_mode))
